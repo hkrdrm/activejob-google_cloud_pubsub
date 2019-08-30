@@ -5,7 +5,7 @@ module ActiveJob
     module PubsubExtension
       refine Google::Cloud::Pubsub::Project do
         def topic_for(queue_name)
-          name = "activejob-queue-#{queue_name}"
+          name = "projects/#{project_id}/topics/activejob-queue-#{queue_name}"
 
           topic(name) || create_topic(name)
         end
